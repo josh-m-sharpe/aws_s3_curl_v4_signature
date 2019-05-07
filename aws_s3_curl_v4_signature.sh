@@ -112,7 +112,7 @@ fi
 # Upload. Supports anonymous upload if bucket is public-writable, and keys are set to ''.
 echo "Uploading: $srcfile ($mime) to $bucket:$targfile"
 curl                            \
-    -# -k                       \
+    -k                          \
     -F key=$targfile            \
     -F acl=$acl                 \
     $key_and_sig_args           \
