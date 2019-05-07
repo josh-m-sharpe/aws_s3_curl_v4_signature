@@ -64,7 +64,7 @@ aws_sk="$2"                                                              # secre
 bucket=`printf $3 | awk 'BEGIN{FS="@"}{print $1}'`                       # bucket name
 region=`printf $3 | awk 'BEGIN{FS="@"}{print ($2==""?"us-east-1":$2)}'`  # region name
 srcfile="$4"                                                             # source file
-targfile=`echo -n "$5" | sed "s/\/$/\/$(basename $srcfile)/"`            # target file
+targfile=`printf "$5" | sed "s/\/$/\/$(basename $srcfile)/"`             # target file
 acl=${6:-'public-read'}                                                  # s3 perms
 mime=${7:-"`guessmime "$srcfile"`"}                                      # mime type
 md5=`openssl md5 -binary "$srcfile" | openssl base64`
